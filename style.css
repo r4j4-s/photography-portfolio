@@ -1,49 +1,104 @@
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body { 
     background-color: #fff; 
-    font-family: "Georgia", serif; /* Serif font for a more 'art book' feel */
+    font-family: "Georgia", serif; 
     color: #111;
     scroll-behavior: smooth;
 }
 
+/* Header & Nav */
 header {
-    padding: 60px 40px;
+    padding: 40px;
     display: flex;
     justify-content: space-between;
     position: sticky;
     top: 0;
-    background: #fff;
+    background: rgba(255,255,255,0.95);
     z-index: 100;
 }
-
+.logo-link { text-decoration: none; color: inherit; }
 h1 { font-size: 1rem; letter-spacing: 4px; font-weight: 400; }
 nav a { text-decoration: none; color: #999; margin-left: 30px; font-size: 0.8rem; text-transform: uppercase; }
 nav a:hover { color: #000; }
 
-.project { padding: 80px 40px; border-bottom: 1px solid #eee; }
-h2 { font-size: 0.9rem; font-weight: 400; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 40px; color: #666; }
-
-.gallery {
-    display: grid;
-    grid-template-columns: 1fr 1fr; /* Two images side by side */
-    gap: 40px;
-}
-
-.gallery img {
+/* Project Cards (One per line, Text Overlay) */
+.project-card {
+    position: relative;
     width: 100%;
-    filter: grayscale(100%);
-    transition: 0.6s all;
+    height: 80vh; /* Large impactful photos */
+    overflow: hidden;
+    margin-bottom: 4px; /* Tight minimalist spacing */
 }
 
-.gallery img:hover { filter: grayscale(0%); }
+.project-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: grayscale(100%);
+    transition: transform 1s ease, filter 1s ease;
+}
 
-.content-section { padding: 100px 40px; max-width: 800px; }
+.project-card:hover img {
+    transform: scale(1.03);
+    filter: grayscale(0%);
+}
+
+.project-overlay {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0,0,0,0.2); /* Subtle dark wash to help text readability */
+}
+
+.project-overlay h2 {
+    color: #fff;
+    font-size: 1.5rem;
+    font-weight: 300;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+}
+
+/* Centering Content Sections */
+.content-section {
+    padding: 100px 20px;
+    display: flex;
+    justify-content: center;
+    border-top: 1px solid #eee;
+}
+
+.center-container {
+    max-width: 800px;
+    width: 100%;
+    text-align: center;
+}
+
+#about-content {
+    margin-bottom: 40px;
+    font-size: 1.1rem;
+    line-height: 1.8;
+}
+
+.about-image {
+    max-width: 300px;
+    width: 100%;
+    height: auto;
+    margin: 0 auto;
+    filter: grayscale(100%);
+}
+
+/* Calendly Centering */
+.calendly-inline-widget {
+    margin: 0 auto;
+}
 
 /* Mobile */
 @media (max-width: 768px) {
-    header { flex-direction: column; padding: 30px 20px; }
-    nav { margin-top: 20px; }
-    nav a { margin-left: 0; margin-right: 20px; }
-    .gallery { grid-template-columns: 1fr; }
-    .project { padding: 40px 20px; }
+    header { flex-direction: column; text-align: center; padding: 20px; }
+    nav { margin-top: 15px; }
+    nav a { margin: 0 10px; }
+    .project-card { height: 60vh; }
+    .project-overlay h2 { font-size: 1rem; }
 }
