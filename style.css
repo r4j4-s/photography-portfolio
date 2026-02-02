@@ -1,53 +1,49 @@
-/* Minimalist Reset */
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body { 
     background-color: #fff; 
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    color: #1a1a1a;
-    line-height: 1.6;
+    font-family: "Georgia", serif; /* Serif font for a more 'art book' feel */
+    color: #111;
+    scroll-behavior: smooth;
 }
 
-/* Navigation */
 header {
-    padding: 40px;
+    padding: 60px 40px;
     display: flex;
     justify-content: space-between;
-    align-items: baseline;
+    position: sticky;
+    top: 0;
+    background: #fff;
+    z-index: 100;
 }
-h1 { font-weight: 300; letter-spacing: 2px; font-size: 1.2rem; }
-nav a { text-decoration: none; color: #888; margin-left: 20px; font-size: 0.9rem; }
+
+h1 { font-size: 1rem; letter-spacing: 4px; font-weight: 400; }
+nav a { text-decoration: none; color: #999; margin-left: 30px; font-size: 0.8rem; text-transform: uppercase; }
 nav a:hover { color: #000; }
 
-/* Responsive Gallery Grid */
+.project { padding: 80px 40px; border-bottom: 1px solid #eee; }
+h2 { font-size: 0.9rem; font-weight: 400; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 40px; color: #666; }
+
 .gallery {
-    column-count: 2; /* 2 columns on desktop */
-    column-gap: 20px;
-    padding: 0 40px 40px 40px;
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Two images side by side */
+    gap: 40px;
 }
 
-.photo-item {
-    margin-bottom: 20px;
-    break-inside: avoid;
-}
-
-.photo-item img {
+.gallery img {
     width: 100%;
-    display: block;
-    filter: grayscale(100%); /* Binet style: Black & White */
-    transition: filter 0.5s ease;
+    filter: grayscale(100%);
+    transition: 0.6s all;
 }
 
-.photo-item img:hover {
-    filter: grayscale(0%); /* Color on hover */
-}
+.gallery img:hover { filter: grayscale(0%); }
 
-/* MOBILE FRIENDLY ADJUSTMENTS */
+.content-section { padding: 100px 40px; max-width: 800px; }
+
+/* Mobile */
 @media (max-width: 768px) {
-    header { flex-direction: column; padding: 20px; }
-    nav { margin-top: 15px; }
-    nav a { margin-left: 0; margin-right: 15px; }
-    .gallery { 
-        column-count: 1; /* 1 column on phones */
-        padding: 0 20px 20px 20px;
-    }
+    header { flex-direction: column; padding: 30px 20px; }
+    nav { margin-top: 20px; }
+    nav a { margin-left: 0; margin-right: 20px; }
+    .gallery { grid-template-columns: 1fr; }
+    .project { padding: 40px 20px; }
 }
