@@ -3,27 +3,74 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Photography Portfolio</title>
+    <title>Raja H. Seggoju | Photography</title>
     <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 </head>
 <body>
 
     <header>
-        <h1>YOUR NAME</h1>
+        <h1>RAJA H. SEGGOJU</h1>
         <nav>
-            <a href="#">Projects</a>
-            <a href="#">Archive</a>
-            <a href="#">About</a>
+            <a href="#projects">Projects</a>
+            <a href="#about">About</a>
+            <a href="#booking">Booking</a>
         </nav>
     </header>
 
-    <main class="gallery">
-        <div class="photo-item"><img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1000" alt="Architecture"></div>
-        <div class="photo-item"><img src="https://images.unsplash.com/photo-1511818566587-0d95b2c13bcd?q=80&w=1000" alt="Minimal"></div>
-        <div class="photo-item"><img src="https://images.unsplash.com/photo-1503387762-592dea58ef23?q=80&w=1000" alt="Concrete"></div>
-        <div class="photo-item"><img src="https://images.unsplash.com/photo-1494438639946-1ebd1d20bf85?q=80&w=1000" alt="Light"></div>
-        <div class="photo-item"><img src="https://images.unsplash.com/photo-1470723710355-95304d8aece4?q=80&w=1000" alt="Shadow"></div>
+    <main id="projects">
+        <section class="project">
+            <h2>I. Concrete Silhouettes</h2>
+            <div class="gallery">
+                <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=800" alt="P1">
+                <img src="https://images.unsplash.com/photo-1511818566587-0d95b2c13bcd?q=80&w=800" alt="P1">
+            </div>
+        </section>
+
+        <section class="project">
+            <h2>II. Light & Void</h2>
+            <div class="gallery">
+                <img src="https://images.unsplash.com/photo-1503387762-592dea58ef23?q=80&w=800" alt="P2">
+                <img src="https://images.unsplash.com/photo-1494438639946-1ebd1d20bf85?q=80&w=800" alt="P2">
+            </div>
+        </section>
+
+        <section class="project">
+            <h2>III. Urban Textures</h2>
+            <div class="gallery">
+                <img src="https://images.unsplash.com/photo-1470723710355-95304d8aece4?q=80&w=800" alt="P3">
+                <img src="https://images.unsplash.com/photo-1518005020251-58296d8f81ad?q=80&w=800" alt="P3">
+            </div>
+        </section>
+
+        <section class="project">
+            <h2>IV. Geometric Silence</h2>
+            <div class="gallery">
+                <img src="https://images.unsplash.com/photo-1449156001437-3a166a3cb73c?q=80&w=800" alt="P4">
+                <img src="https://images.unsplash.com/photo-1496307653780-42ee777d4833?q=80&w=800" alt="P4">
+            </div>
+        </section>
     </main>
 
+    <section id="about" class="content-section">
+        <h2>About</h2>
+        <div id="about-content">Loading...</div>
+    </section>
+
+    <section id="booking" class="content-section">
+        <h2>Booking</h2>
+        <p>For inquiries and assignments, please select a time below:</p>
+        <div class="calendly-inline-widget" data-url="YOUR_CALENDLY_LINK_HERE" style="min-width:320px;height:630px;"></div>
+        <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+    </section>
+
+    <script>
+        // Fetch and render the about.md file
+        fetch('about.md')
+            .then(response => response.text())
+            .then(text => {
+                document.getElementById('about-content').innerHTML = marked.parse(text);
+            });
+    </script>
 </body>
 </html>
