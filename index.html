@@ -10,62 +10,60 @@
 <body>
 
     <header>
-        <h1>RAJA H. SEGGOJU</h1>
+        <a href="index.html" class="logo-link"><h1>RAJA H. SEGGOJU</h1></a>
         <nav>
-            <a href="#projects">Projects</a>
             <a href="#about">About</a>
             <a href="#booking">Booking</a>
         </nav>
     </header>
 
     <main id="projects">
-        <section class="project">
-            <h2>I. Concrete Silhouettes</h2>
-            <div class="gallery">
-                <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=800" alt="P1">
-                <img src="https://images.unsplash.com/photo-1511818566587-0d95b2c13bcd?q=80&w=800" alt="P1">
+        <div class="project-card">
+            <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1200" alt="P1">
+            <div class="project-overlay">
+                <h2>I. Concrete Silhouettes</h2>
             </div>
-        </section>
+        </div>
 
-        <section class="project">
-            <h2>II. Light & Void</h2>
-            <div class="gallery">
-                <img src="https://images.unsplash.com/photo-1503387762-592dea58ef23?q=80&w=800" alt="P2">
-                <img src="https://images.unsplash.com/photo-1494438639946-1ebd1d20bf85?q=80&w=800" alt="P2">
+        <div class="project-card">
+            <img src="https://images.unsplash.com/photo-1503387762-592dea58ef23?q=80&w=1200" alt="P2">
+            <div class="project-overlay">
+                <h2>II. Light & Void</h2>
             </div>
-        </section>
+        </div>
 
-        <section class="project">
-            <h2>III. Urban Textures</h2>
-            <div class="gallery">
-                <img src="https://images.unsplash.com/photo-1470723710355-95304d8aece4?q=80&w=800" alt="P3">
-                <img src="https://images.unsplash.com/photo-1518005020251-58296d8f81ad?q=80&w=800" alt="P3">
+        <div class="project-card">
+            <img src="https://images.unsplash.com/photo-1470723710355-95304d8aece4?q=80&w=1200" alt="P3">
+            <div class="project-overlay">
+                <h2>III. Urban Textures</h2>
             </div>
-        </section>
+        </div>
 
-        <section class="project">
-            <h2>IV. Geometric Silence</h2>
-            <div class="gallery">
-                <img src="https://images.unsplash.com/photo-1449156001437-3a166a3cb73c?q=80&w=800" alt="P4">
-                <img src="https://images.unsplash.com/photo-1496307653780-42ee777d4833?q=80&w=800" alt="P4">
+        <div class="project-card">
+            <img src="https://images.unsplash.com/photo-1449156001437-3a166a3cb73c?q=80&w=1200" alt="P4">
+            <div class="project-overlay">
+                <h2>IV. Geometric Silence</h2>
             </div>
-        </section>
+        </div>
     </main>
 
     <section id="about" class="content-section">
-        <h2>About</h2>
-        <div id="about-content">Loading...</div>
+        <div class="center-container">
+            <div id="about-content">Loading...</div>
+            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=400" alt="Raja H. Seggoju" class="about-image">
+        </div>
     </section>
 
     <section id="booking" class="content-section">
-        <h2>Booking</h2>
-        <p>For inquiries and assignments, please select a time below:</p>
-        <div class="calendly-inline-widget" data-url="https://calendly.com/rajahavish-seggoju" style="min-width:320px;height:630px;"></div>
-        <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+        <div class="center-container">
+            <h2>Booking</h2>
+            <p>For inquiries and assignments, please select a time below:</p>
+            <div class="calendly-inline-widget" data-url="https://calendly.com/rajahavish-seggoju" style="min-width:320px;height:700px;"></div>
+            <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+        </div>
     </section>
 
     <script>
-        // Fetch and render the about.md file
         fetch('about.md')
             .then(response => response.text())
             .then(text => {
