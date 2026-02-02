@@ -1,0 +1,53 @@
+/* Minimalist Reset */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { 
+    background-color: #fff; 
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: #1a1a1a;
+    line-height: 1.6;
+}
+
+/* Navigation */
+header {
+    padding: 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+}
+h1 { font-weight: 300; letter-spacing: 2px; font-size: 1.2rem; }
+nav a { text-decoration: none; color: #888; margin-left: 20px; font-size: 0.9rem; }
+nav a:hover { color: #000; }
+
+/* Responsive Gallery Grid */
+.gallery {
+    column-count: 2; /* 2 columns on desktop */
+    column-gap: 20px;
+    padding: 0 40px 40px 40px;
+}
+
+.photo-item {
+    margin-bottom: 20px;
+    break-inside: avoid;
+}
+
+.photo-item img {
+    width: 100%;
+    display: block;
+    filter: grayscale(100%); /* Binet style: Black & White */
+    transition: filter 0.5s ease;
+}
+
+.photo-item img:hover {
+    filter: grayscale(0%); /* Color on hover */
+}
+
+/* MOBILE FRIENDLY ADJUSTMENTS */
+@media (max-width: 768px) {
+    header { flex-direction: column; padding: 20px; }
+    nav { margin-top: 15px; }
+    nav a { margin-left: 0; margin-right: 15px; }
+    .gallery { 
+        column-count: 1; /* 1 column on phones */
+        padding: 0 20px 20px 20px;
+    }
+}
