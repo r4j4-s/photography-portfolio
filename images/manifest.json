@@ -1,0 +1,34 @@
+{
+  "Family": {
+    "Spring": [
+      "spring-family-1.jpg",
+      "spring-family-2.jpg",
+      "spring-family-3.jpg"
+    ],
+    "Summer": [
+      "summer-family-1.jpg",
+      "summer-family-2.jpg",
+      "summer-family-3.jpg"
+    ],
+    "Winter": [
+      "winter-family-1.jpg",
+      "winter-family-2.jpg",
+      "winter-family-3.jpg"
+    ]
+  },
+  "Nature": [
+    "nature-1.jpg",
+    "nature-2.jpg",
+    "nature-3.jpg"
+  ],
+  "Portraits": [
+    "portrait-1.jpg",
+    "portrait-2.jpg",
+    "portrait-3.jpg"
+  ],
+  "Street": [
+    "street-1.jpg",
+    "street-2.jpg",
+    "street-3.jpg"
+  ]
+}

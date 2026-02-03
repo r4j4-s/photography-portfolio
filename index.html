@@ -17,27 +17,9 @@
         </nav>
     </header>
 
-    <main id="projects">
-        <div class="project-card">
-            <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1200" alt="P1">
-            <div class="project-overlay"><h2>I. Concrete Silhouettes</h2></div>
-        </div>
+    <nav class="breadcrumb" id="breadcrumb"></nav>
 
-        <div class="project-card">
-            <img src="https://images.unsplash.com/photo-1503387762-592dea58ef23?q=80&w=1200" alt="P2">
-            <div class="project-overlay"><h2>II. Light & Void</h2></div>
-        </div>
-
-        <div class="project-card">
-            <img src="https://images.unsplash.com/photo-1470723710355-95304d8aece4?q=80&w=1200" alt="P3">
-            <div class="project-overlay"><h2>III. Urban Textures</h2></div>
-        </div>
-
-        <div class="project-card">
-            <img src="https://images.unsplash.com/photo-1449156001437-3a166a3cb73c?q=80&w=1200" alt="P4">
-            <div class="project-overlay"><h2>IV. Geometric Silence</h2></div>
-        </div>
-    </main>
+    <main id="projects"></main>
 
     <div class="scroll-hint">Scroll to explore →</div>
     <div class="cursor"></div>
@@ -45,7 +27,145 @@
     <script>
         const cursor = document.querySelector('.cursor');
         const projects = document.getElementById('projects');
-        const cards = document.querySelectorAll('.project-card');
+        const breadcrumb = document.getElementById('breadcrumb');
+        const scrollHint = document.querySelector('.scroll-hint');
+
+        let manifest = {};
+        let currentPath = [];
+
+        // Load manifest and initialize gallery
+        fetch('images/manifest.json')
+            .then(res => res.json())
+            .then(data => {
+                manifest = data;
+                renderGallery();
+            });
+
+        // Get data at current path
+        function getDataAtPath(path) {
+            let data = manifest;
+            for (const segment of path) {
+                data = data[segment];
+            }
+            return data;
+        }
+
+        // Check if data is an array of images
+        function isImageArray(data) {
+            return Array.isArray(data);
+        }
+
+        // Get first image from a folder (for folder thumbnails)
+        function getFirstImage(data, path) {
+            if (isImageArray(data)) {
+                return 'images/' + path.join('/') + '/' + data[0];
+            }
+            // Recursively find first image in subfolders
+            const firstKey = Object.keys(data)[0];
+            return getFirstImage(data[firstKey], [...path, firstKey]);
+        }
+
+        // Render breadcrumb navigation
+        function renderBreadcrumb() {
+            breadcrumb.innerHTML = '';
+
+            // Home link
+            const homeLink = document.createElement('a');
+            homeLink.textContent = 'Gallery';
+            homeLink.href = '#';
+            homeLink.addEventListener('click', (e) => {
+                e.preventDefault();
+                currentPath = [];
+                renderGallery();
+            });
+            breadcrumb.appendChild(homeLink);
+
+            // Path segments
+            currentPath.forEach((segment, index) => {
+                const separator = document.createElement('span');
+                separator.textContent = ' / ';
+                breadcrumb.appendChild(separator);
+
+                const link = document.createElement('a');
+                link.textContent = segment;
+                link.href = '#';
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    currentPath = currentPath.slice(0, index + 1);
+                    renderGallery();
+                });
+                breadcrumb.appendChild(link);
+            });
+        }
+
+        // Render the gallery
+        function renderGallery() {
+            projects.innerHTML = '';
+            projects.scrollLeft = 0;
+            renderBreadcrumb();
+
+            const data = currentPath.length === 0 ? manifest : getDataAtPath(currentPath);
+
+            if (isImageArray(data)) {
+                // Render images
+                data.forEach((img, index) => {
+                    const card = document.createElement('div');
+                    card.className = 'project-card image-card';
+
+                    const imgEl = document.createElement('img');
+                    imgEl.src = 'images/' + currentPath.join('/') + '/' + img;
+                    imgEl.alt = img;
+
+                    card.appendChild(imgEl);
+                    projects.appendChild(card);
+                });
+            } else {
+                // Render folders
+                Object.keys(data).forEach((folderName, index) => {
+                    const card = document.createElement('div');
+                    card.className = 'project-card folder-card';
+
+                    const imgEl = document.createElement('img');
+                    imgEl.src = getFirstImage(data[folderName], [...currentPath, folderName]);
+                    imgEl.alt = folderName;
+
+                    const overlay = document.createElement('div');
+                    overlay.className = 'project-overlay';
+                    const title = document.createElement('h2');
+                    title.textContent = folderName;
+                    overlay.appendChild(title);
+
+                    card.appendChild(imgEl);
+                    card.appendChild(overlay);
+
+                    card.addEventListener('click', () => {
+                        currentPath.push(folderName);
+                        renderGallery();
+                    });
+
+                    projects.appendChild(card);
+                });
+            }
+
+            setupCursorHandlers();
+            resetScrollHint();
+        }
+
+        // Setup cursor hover handlers for dynamic elements
+        function setupCursorHandlers() {
+            const cards = document.querySelectorAll('.project-card');
+            const hoverElements = document.querySelectorAll('a, button, .project-card');
+
+            hoverElements.forEach(el => {
+                el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
+                el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
+            });
+
+            cards.forEach(card => {
+                card.addEventListener('mouseenter', () => cursor.classList.add('on-dark'));
+                card.addEventListener('mouseleave', () => cursor.classList.remove('on-dark'));
+            });
+        }
 
         // Custom cursor movement
         document.addEventListener('mousemove', (e) => {
@@ -53,24 +173,15 @@
             cursor.style.top = e.clientY + 'px';
         });
 
-        // Cursor hover states
-        const hoverElements = document.querySelectorAll('a, button, .project-card');
-        hoverElements.forEach(el => {
-            el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
-            el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
-        });
-
-        // Cursor color on dark backgrounds
-        cards.forEach(card => {
-            card.addEventListener('mouseenter', () => cursor.classList.add('on-dark'));
-            card.addEventListener('mouseleave', () => cursor.classList.remove('on-dark'));
-        });
-
         // Hide scroll hint after first scroll
         let hintHidden = false;
+        function resetScrollHint() {
+            hintHidden = false;
+            scrollHint.style.opacity = '';
+        }
         projects.addEventListener('scroll', () => {
             if (!hintHidden) {
-                document.querySelector('.scroll-hint').style.opacity = '0';
+                scrollHint.style.opacity = '0';
                 hintHidden = true;
             }
         });

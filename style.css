@@ -57,6 +57,24 @@ nav a {
 }
 nav a:hover { color: #000; }
 
+/* Breadcrumb Navigation */
+.breadcrumb {
+    padding: 0 40px 20px;
+    font-size: 0.9rem;
+    color: #555;
+}
+.breadcrumb a {
+    color: #555;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+.breadcrumb a:hover {
+    color: #000;
+}
+.breadcrumb span {
+    color: #999;
+}
+
 /* Horizontal Scroll Gallery */
 #projects {
     display: flex;
@@ -98,6 +116,9 @@ nav a:hover { color: #000; }
 .project-card:hover img {
     transform: scale(1.02);
     filter: grayscale(0%);
+}
+.folder-card {
+    cursor: pointer;
 }
 .project-overlay {
     position: absolute;
@@ -204,6 +225,7 @@ nav a:hover { color: #000; }
     header { flex-direction: column; text-align: center; padding: 20px; }
     nav { margin-top: 15px; }
     nav a { margin: 0 10px; }
+    .breadcrumb { padding: 0 20px 15px; text-align: center; }
     #projects { height: 70vh; padding: 0; align-items: stretch; }
     .project-card { width: 85vw; height: 100%; }
     .project-card img { width: 100%; height: 100%; object-fit: cover; }
