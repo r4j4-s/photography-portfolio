@@ -78,7 +78,7 @@ nav a:hover { color: #000; }
 /* Horizontal Scroll Gallery */
 #projects {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     padding: 40px 0;
     overflow-x: auto;
     overflow-y: hidden;

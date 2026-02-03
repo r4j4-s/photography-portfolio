@@ -1,7 +1,6 @@
 {
   "Family": {
     "Spring": [
-      "spring-family-1.jpg",
       "spring-family-2.jpg",
       "spring-family-3.jpg"
     ],
@@ -11,9 +10,7 @@
       "summer-family-3.jpg"
     ],
     "Winter": [
-      "winter-family-1.jpg",
-      "winter-family-2.jpg",
-      "winter-family-3.jpg"
+      "winter-family-1.jpg"
     ]
   },
   "Nature": [
