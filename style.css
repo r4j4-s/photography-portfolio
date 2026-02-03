@@ -67,15 +67,10 @@ nav a:hover { color: #000; }
     scroll-snap-type: x mandatory;
     scroll-behavior: smooth;
     -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
 }
 #projects::-webkit-scrollbar {
-    height: 2px;
-}
-#projects::-webkit-scrollbar-track {
-    background: #eee;
-}
-#projects::-webkit-scrollbar-thumb {
-    background: #111;
+    display: none;
 }
 
 .project-card {
@@ -149,15 +144,10 @@ nav a:hover { color: #000; }
     scroll-snap-type: x mandatory;
     scroll-behavior: smooth;
     -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
 }
 #about-scroll::-webkit-scrollbar {
-    height: 2px;
-}
-#about-scroll::-webkit-scrollbar-track {
-    background: #eee;
-}
-#about-scroll::-webkit-scrollbar-thumb {
-    background: #111;
+    display: none;
 }
 .about-panel {
     flex-shrink: 0;
