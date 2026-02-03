@@ -38,20 +38,41 @@
         </div>
     </main>
 
-    <button id="backToTop" title="Go to top">↑</button>
+    <div class="scroll-hint">Scroll to explore →</div>
+    <div class="cursor"></div>
 
     <script>
-        const backToTopBtn = document.getElementById("backToTop");
-        window.onscroll = function() {
-            if (document.body.scrollTop > 500 || document.documentElement.scrollTop > 500) {
-                backToTopBtn.style.display = "block";
-            } else {
-                backToTopBtn.style.display = "none";
+        const cursor = document.querySelector('.cursor');
+        const projects = document.getElementById('projects');
+        const cards = document.querySelectorAll('.project-card');
+
+        // Custom cursor movement
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+        });
+
+        // Cursor hover states
+        const hoverElements = document.querySelectorAll('a, button, .project-card');
+        hoverElements.forEach(el => {
+            el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
+            el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
+        });
+
+        // Cursor color on dark backgrounds
+        cards.forEach(card => {
+            card.addEventListener('mouseenter', () => cursor.classList.add('on-dark'));
+            card.addEventListener('mouseleave', () => cursor.classList.remove('on-dark'));
+        });
+
+        // Hide scroll hint after first scroll
+        let hintHidden = false;
+        projects.addEventListener('scroll', () => {
+            if (!hintHidden) {
+                document.querySelector('.scroll-hint').style.opacity = '0';
+                hintHidden = true;
             }
-        };
-        backToTopBtn.onclick = function() {
-            window.scrollTo({top: 0, behavior: 'smooth'});
-        };
+        });
     </script>
 </body>
 </html>

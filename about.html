@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Raja H. Seggoju | Photography</title>
+    <title>About | Raja H. Seggoju</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -11,47 +11,37 @@
     <header>
         <a href="index.html" class="logo-link"><h1>RAJA H. SEGGOJU</h1></a>
         <nav>
-            <a href="about.html">About</a>
+            <a href="about.html" style="color:#000;">About</a>
             <a href="booking.html">Booking</a>
         </nav>
     </header>
 
-    <main id="projects">
-        <div class="project-card">
-            <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1200" alt="P1">
-            <div class="project-overlay"><h2>I. Concrete Silhouettes</h2></div>
+    <section class="content-section">
+        <div class="center-container">
+            <p id="about-content">
+                I photograph the quiet geometry of urban spaces—the moments where light, shadow, and structure converge into something worth pausing for. My work explores architecture not as backdrop, but as subject: the negative space between buildings, the rhythm of windows, the way concrete ages.
+                <br><br>
+                Based in the Pacific Northwest. Available for commissioned work, editorial assignments, and collaborative projects.
+            </p>
+            <img class="about-image" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=600" alt="Portrait">
         </div>
+    </section>
 
-        <div class="project-card">
-            <img src="https://images.unsplash.com/photo-1503387762-592dea58ef23?q=80&w=1200" alt="P2">
-            <div class="project-overlay"><h2>II. Light & Void</h2></div>
-        </div>
-
-        <div class="project-card">
-            <img src="https://images.unsplash.com/photo-1470723710355-95304d8aece4?q=80&w=1200" alt="P3">
-            <div class="project-overlay"><h2>III. Urban Textures</h2></div>
-        </div>
-
-        <div class="project-card">
-            <img src="https://images.unsplash.com/photo-1449156001437-3a166a3cb73c?q=80&w=1200" alt="P4">
-            <div class="project-overlay"><h2>IV. Geometric Silence</h2></div>
-        </div>
-    </main>
-
-    <button id="backToTop" title="Go to top">↑</button>
+    <div class="cursor"></div>
 
     <script>
-        const backToTopBtn = document.getElementById("backToTop");
-        window.onscroll = function() {
-            if (document.body.scrollTop > 500 || document.documentElement.scrollTop > 500) {
-                backToTopBtn.style.display = "block";
-            } else {
-                backToTopBtn.style.display = "none";
-            }
-        };
-        backToTopBtn.onclick = function() {
-            window.scrollTo({top: 0, behavior: 'smooth'});
-        };
+        const cursor = document.querySelector('.cursor');
+
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+        });
+
+        const hoverElements = document.querySelectorAll('a, button');
+        hoverElements.forEach(el => {
+            el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
+            el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
+        });
     </script>
 </body>
 </html>
