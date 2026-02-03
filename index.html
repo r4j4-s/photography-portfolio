@@ -76,12 +76,13 @@
         });
 
         // Convert vertical scroll to horizontal
-        document.addEventListener('wheel', (e) => {
-            if (window.innerWidth > 768) {
-                e.preventDefault();
-                projects.scrollLeft += e.deltaY;
-            }
+        window.addEventListener('wheel', (e) => {
+            e.preventDefault();
+            projects.scrollLeft += e.deltaY + e.deltaX;
         }, { passive: false });
+
+        // Prevent default vertical scroll on body
+        document.body.style.overflow = 'hidden';
     </script>
 </body>
 </html>
