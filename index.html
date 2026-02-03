@@ -74,6 +74,14 @@
                 hintHidden = true;
             }
         });
+
+        // Convert vertical scroll to horizontal
+        document.addEventListener('wheel', (e) => {
+            if (window.innerWidth > 768) {
+                e.preventDefault();
+                projects.scrollLeft += e.deltaY;
+            }
+        }, { passive: false });
     </script>
 </body>
 </html>

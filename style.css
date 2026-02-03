@@ -60,11 +60,11 @@ nav a:hover { color: #000; }
 /* Horizontal Scroll Gallery */
 #projects {
     display: flex;
+    align-items: center;
     height: calc(100vh - 100px);
     overflow-x: auto;
     overflow-y: hidden;
     scroll-snap-type: x mandatory;
-    scroll-behavior: smooth;
     -webkit-overflow-scrolling: touch;
 }
 #projects::-webkit-scrollbar {
@@ -79,12 +79,13 @@ nav a:hover { color: #000; }
 
 .project-card {
     position: relative;
-    min-width: 70vw;
-    height: 100%;
+    min-width: 65vw;
+    height: 75%;
     scroll-snap-align: center;
     scroll-snap-stop: always;
-    margin-right: 20px;
+    margin-right: 30px;
     overflow: hidden;
+    flex-shrink: 0;
 }
 .project-card:first-child {
     margin-left: 40px;
@@ -138,7 +139,70 @@ nav a:hover { color: #000; }
     50% { opacity: 1; }
 }
 
-/* Page Content Styling */
+/* About Page - Horizontal Scroll */
+.about-scroll {
+    display: flex;
+    align-items: center;
+    height: calc(100vh - 100px);
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+}
+.about-scroll::-webkit-scrollbar {
+    height: 2px;
+}
+.about-scroll::-webkit-scrollbar-track {
+    background: #eee;
+}
+.about-scroll::-webkit-scrollbar-thumb {
+    background: #111;
+}
+
+.about-text {
+    min-width: 100vw;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+    scroll-snap-align: center;
+    flex-shrink: 0;
+}
+#about-content {
+    max-width: 550px;
+    font-size: 1.15rem;
+    line-height: 1.8;
+}
+#about-content p {
+    text-align: justify;
+    hyphens: auto;
+    margin-bottom: 0;
+    text-indent: 1.5em;
+}
+#about-content p:first-child {
+    text-indent: 0;
+}
+
+.about-image-container {
+    min-width: 60vw;
+    height: 75%;
+    scroll-snap-align: center;
+    flex-shrink: 0;
+    margin-right: 40px;
+}
+.about-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: grayscale(100%);
+    transition: filter 1.2s ease;
+}
+.about-image:hover {
+    filter: grayscale(0%);
+}
+
+/* Booking Page Content */
 .content-section {
     padding: 80px 20px;
     display: flex;
@@ -158,27 +222,6 @@ nav a:hover { color: #000; }
     margin-bottom: 1.5em;
     letter-spacing: 0.5px;
 }
-#about-content {
-    margin-bottom: 50px;
-    font-size: 1.15rem;
-    line-height: 1.8;
-}
-#about-content p {
-    text-align: justify;
-    hyphens: auto;
-    margin-bottom: 0;
-    text-indent: 1.5em;
-}
-#about-content p:first-child {
-    text-indent: 0;
-}
-.about-image {
-    max-width: 350px;
-    width: 100%;
-    filter: grayscale(100%);
-    margin-top: 30px;
-    display: block;
-}
 
 /* Back to Top */
 #backToTop {
@@ -195,16 +238,69 @@ nav a:hover { color: #000; }
 
 /* Mobile Adjustments */
 @media (max-width: 768px) {
-    header { flex-direction: column; text-align: center; padding: 20px; }
+    header {
+        flex-direction: column;
+        text-align: center;
+        padding: 20px;
+        position: relative;
+        background: #fffff8;
+    }
     nav { margin-top: 15px; }
-    nav a { margin: 0 10px; }
-    #projects { height: calc(100vh - 120px); }
-    .project-card { min-width: 85vw; }
-    .project-card:first-child { margin-left: 20px; }
-    .project-card:last-child { margin-right: 20px; }
+    nav a { margin: 0 12px; }
+
+    #projects {
+        flex-direction: column;
+        height: auto;
+        overflow-x: hidden;
+        overflow-y: auto;
+        scroll-snap-type: y mandatory;
+        padding: 20px;
+        gap: 25px;
+    }
+    .project-card {
+        min-width: 100%;
+        width: 100%;
+        height: 60vh;
+        margin: 0;
+        scroll-snap-align: center;
+    }
+    .project-card:first-child { margin-left: 0; }
+    .project-card:last-child { margin-right: 0; }
+    .project-overlay {
+        padding: 25px;
+        background: linear-gradient(transparent, rgba(0,0,0,0.5));
+    }
     .project-overlay h2 { font-size: 1rem; }
-    .center-container { padding: 0 10px; }
-    #about-content { font-size: 1.05rem; }
+
+    .scroll-hint { display: none; }
+
+    .about-scroll {
+        flex-direction: column;
+        height: auto;
+        overflow-x: hidden;
+        overflow-y: auto;
+        scroll-snap-type: y mandatory;
+    }
+    .about-text {
+        min-width: 100%;
+        min-height: 80vh;
+        padding: 30px 20px;
+        scroll-snap-align: start;
+    }
+    #about-content { font-size: 1.05rem; line-height: 1.7; }
+    .about-image-container {
+        min-width: 100%;
+        width: 100%;
+        height: 70vh;
+        margin: 0;
+        padding: 20px;
+        scroll-snap-align: start;
+    }
+    .about-image { border-radius: 0; }
+
+    .content-section { padding: 50px 20px; }
+    .center-container { padding: 0; }
+
     .cursor { display: none; }
     * { cursor: auto; }
 }
