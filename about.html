@@ -17,14 +17,12 @@
         </nav>
     </header>
 
-    <section class="about-scroll">
-        <div class="about-text">
+    <section class="content-section">
+        <div class="center-container">
             <div id="about-content">
                 <p>I photograph the quiet geometry of urban spaces—the moments where light, shadow, and structure converge into something worth pausing for. My work explores architecture not as backdrop, but as subject: the negative space between buildings, the rhythm of windows, the way concrete ages.</p>
                 <p>Based in the Pacific Northwest. Available for commissioned work, editorial assignments, and collaborative projects.</p>
             </div>
-        </div>
-        <div class="about-image-container">
             <img class="about-image" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=600" alt="Portrait">
         </div>
     </section>
@@ -33,7 +31,6 @@
 
     <script>
         const cursor = document.querySelector('.cursor');
-        const aboutScroll = document.querySelector('.about-scroll');
 
         document.addEventListener('mousemove', (e) => {
             cursor.style.left = e.clientX + 'px';
@@ -45,14 +42,6 @@
             el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
             el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
         });
-
-        // Convert vertical scroll to horizontal
-        document.addEventListener('wheel', (e) => {
-            if (window.innerWidth > 768) {
-                e.preventDefault();
-                aboutScroll.scrollLeft += e.deltaY;
-            }
-        }, { passive: false });
     </script>
 </body>
 </html>
