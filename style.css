@@ -60,7 +60,7 @@ nav a:hover { color: #000; }
 /* Horizontal Scroll Gallery */
 #projects {
     display: flex;
-    height: calc(100vh - 100px);
+    height: 70vh;
     overflow-x: auto;
     overflow-y: hidden;
     scroll-snap-type: x mandatory;
@@ -141,7 +141,7 @@ nav a:hover { color: #000; }
 /* Horizontal Scroll About */
 #about-scroll {
     display: flex;
-    height: calc(100vh - 100px);
+    height: 70vh;
     overflow-x: auto;
     overflow-y: hidden;
     scroll-snap-type: x mandatory;
@@ -216,12 +216,12 @@ nav a:hover { color: #000; }
     header { flex-direction: column; text-align: center; padding: 20px; }
     nav { margin-top: 15px; }
     nav a { margin: 0 10px; }
-    #projects { height: calc(100vh - 120px); }
+    #projects { height: 70vh; }
     .project-card { min-width: 85vw; }
     .project-card:first-child { margin-left: 20px; }
     .project-card:last-child { margin-right: 20px; }
     .project-overlay h2 { font-size: 1rem; }
-    #about-scroll { height: calc(100vh - 120px); }
+    #about-scroll { height: 70vh; }
     .about-panel { min-width: 85vw; }
     .about-image-panel { margin-left: 20px; min-width: 85vw; }
     .about-text-panel { padding: 40px 30px; margin-right: 20px; min-width: 85vw; }
