@@ -1,13 +1,10 @@
 * { margin: 0; padding: 0; box-sizing: border-box; cursor: none; }
-html {
-    background-color: #fffff8;
-}
-body {
+html, body {
     background-color: #fffff8;
     font-family: "Computer Modern Serif", serif;
     color: #111;
-    height: 100vh;
     overflow: hidden;
+    height: 100%;
 }
 
 /* Custom Circle Cursor */

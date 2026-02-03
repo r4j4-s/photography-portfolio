@@ -46,7 +46,6 @@
         const cursor = document.querySelector('.cursor');
         const projects = document.getElementById('projects');
         const cards = document.querySelectorAll('.project-card');
-        const scrollHint = document.querySelector('.scroll-hint');
 
         // Custom cursor movement
         document.addEventListener('mousemove', (e) => {
@@ -70,17 +69,20 @@
         // Hide scroll hint after first scroll
         let hintHidden = false;
         projects.addEventListener('scroll', () => {
-            if (!hintHidden && scrollHint) {
-                scrollHint.style.opacity = '0';
+            if (!hintHidden) {
+                document.querySelector('.scroll-hint').style.opacity = '0';
                 hintHidden = true;
             }
         });
 
-        // Convert vertical scroll to horizontal (desktop)
-        projects.addEventListener('wheel', (e) => {
+        // Convert vertical scroll to horizontal
+        window.addEventListener('wheel', (e) => {
             e.preventDefault();
-            projects.scrollLeft += e.deltaY;
+            projects.scrollLeft += e.deltaY + e.deltaX;
         }, { passive: false });
+
+        // Prevent default vertical scroll on body
+        document.body.style.overflow = 'hidden';
     </script>
 </body>
 </html>

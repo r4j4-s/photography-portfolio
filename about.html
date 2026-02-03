@@ -46,11 +46,14 @@
             el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
         });
 
-        // Convert vertical scroll to horizontal (desktop)
-        aboutScroll.addEventListener('wheel', (e) => {
+        // Convert vertical scroll to horizontal
+        window.addEventListener('wheel', (e) => {
             e.preventDefault();
-            aboutScroll.scrollLeft += e.deltaY;
+            aboutScroll.scrollLeft += e.deltaY + e.deltaX;
         }, { passive: false });
+
+        // Prevent default vertical scroll on body
+        document.body.style.overflow = 'hidden';
     </script>
 </body>
 </html>
