@@ -155,7 +155,9 @@ nav a:hover { color: #000; }
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(255, 255, 248, 0.95);
+    background: rgba(255, 255, 248, 0.85);
+    backdrop-filter: blur(40px);
+    -webkit-backdrop-filter: blur(40px);
     z-index: 1000;
     justify-content: center;
     align-items: center;
