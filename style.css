@@ -218,10 +218,11 @@ nav a:hover { color: #000; }
 /* Horizontal Scroll About */
 #about-scroll {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
+    justify-content: center;
     padding: 40px 0;
-    overflow-x: auto;
-    overflow-y: hidden;
+    height: calc(100vh - 120px);
+    overflow: hidden;
     scroll-snap-type: x mandatory;
     scroll-behavior: smooth;
     -webkit-overflow-scrolling: touch;
@@ -235,12 +236,14 @@ nav a:hover { color: #000; }
     scroll-snap-align: center;
 }
 .about-image-panel {
-    width: 28vw;
-    margin-left: 40px;
+    width: auto;
+    margin-left: 0;
+    margin-right: 60px;
 }
 .about-image-panel .about-image {
-    width: 100%;
-    height: auto;
+    width: auto;
+    height: calc(100vh - 200px);
+    max-height: 600px;
     display: block;
     filter: grayscale(100%);
     transition: filter 1.2s ease;
@@ -249,9 +252,9 @@ nav a:hover { color: #000; }
     filter: grayscale(0%);
 }
 .about-text-panel {
-    width: 35vw;
-    padding: 40px 60px;
-    margin-right: 40px;
+    width: auto;
+    max-width: 500px;
+    padding: 0;
 }
 #about-content {
     max-width: 500px;
@@ -292,11 +295,11 @@ nav a:hover { color: #000; }
     .project-card:first-child { margin-left: 20px; }
     .project-card:last-child { margin-right: 20px; }
     .project-overlay h2 { font-size: 1rem; }
-    #about-scroll { height: 70vh; padding: 0; align-items: stretch; }
+    #about-scroll { height: 70vh; padding: 0; align-items: stretch; justify-content: flex-start; overflow-x: auto; }
     .about-panel { height: 100%; }
-    .about-image-panel { width: 85vw; margin-left: 20px; }
-    .about-image-panel .about-image { width: 100%; height: 100%; object-fit: cover; }
-    .about-text-panel { width: 85vw; padding: 40px 30px; margin-right: 20px; display: flex; align-items: center; }
+    .about-image-panel { width: 85vw; margin-left: 20px; margin-right: 20px; }
+    .about-image-panel .about-image { width: 100%; height: 100%; max-height: none; object-fit: cover; }
+    .about-text-panel { width: 85vw; max-width: none; padding: 40px 30px; margin-right: 20px; display: flex; align-items: center; }
     #about-content { font-size: 1.05rem; }
     .cursor { display: none; }
     * { cursor: auto; }
