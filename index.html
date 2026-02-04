@@ -57,8 +57,25 @@
             .then(res => res.json())
             .then(data => {
                 manifest = data;
-                renderGallery();
+                // Check URL hash for initial path
+                const hash = window.location.hash.slice(1);
+                if (hash) {
+                    currentPath = hash.split('/').filter(p => p);
+                }
+                // Set initial history state
+                history.replaceState({ path: [...currentPath] }, '', window.location.pathname + window.location.hash);
+                renderGallery(false);
             });
+
+        // Handle browser back/forward buttons
+        window.addEventListener('popstate', (e) => {
+            if (e.state && e.state.path) {
+                currentPath = e.state.path;
+            } else {
+                currentPath = [];
+            }
+            renderGallery(false);
+        });
 
         // Get data at current path
         function getDataAtPath(path) {
@@ -118,10 +135,16 @@
         }
 
         // Render the gallery
-        function renderGallery() {
+        function renderGallery(pushHistory = true) {
             projects.innerHTML = '';
             projects.scrollLeft = 0;
             renderBreadcrumb();
+
+            // Update browser history
+            if (pushHistory) {
+                const hash = currentPath.length ? '#' + currentPath.join('/') : '';
+                history.pushState({ path: [...currentPath] }, '', window.location.pathname + hash);
+            }
 
             const data = currentPath.length === 0 ? manifest : getDataAtPath(currentPath);
 
