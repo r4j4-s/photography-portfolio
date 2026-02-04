@@ -43,12 +43,15 @@
         let currentPath = [];
 
         // Lightbox handlers
-        lightbox.addEventListener('click', () => {
-            lightbox.classList.remove('active');
-        });
+        function closeLightbox() {
+            if (lightbox.classList.contains('active')) {
+                history.back();
+            }
+        }
+        lightbox.addEventListener('click', closeLightbox);
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape') {
-                lightbox.classList.remove('active');
+                closeLightbox();
             }
         });
 
@@ -69,6 +72,11 @@
 
         // Handle browser back/forward buttons
         window.addEventListener('popstate', (e) => {
+            // Close lightbox if open
+            if (lightbox.classList.contains('active')) {
+                lightbox.classList.remove('active');
+                return;
+            }
             if (e.state && e.state.path) {
                 currentPath = e.state.path;
             } else {
@@ -165,6 +173,8 @@
                         const title = img.replace(/\.[^.]+$/, '').replace(/-/g, ' ');
                         lightboxTitle.textContent = title;
                         lightbox.classList.add('active');
+                        // Push history state for lightbox
+                        history.pushState({ path: [...currentPath], lightbox: true }, '', window.location.href);
                     });
 
                     card.appendChild(imgEl);
