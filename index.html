@@ -24,14 +24,31 @@
     <div class="scroll-hint">Scroll to explore →</div>
     <div class="cursor"></div>
 
+    <div class="lightbox" id="lightbox">
+        <button class="lightbox-close" id="lightbox-close">&times;</button>
+        <img src="" alt="Full view" id="lightbox-img">
+    </div>
+
     <script>
         const cursor = document.querySelector('.cursor');
         const projects = document.getElementById('projects');
         const breadcrumb = document.getElementById('breadcrumb');
         const scrollHint = document.querySelector('.scroll-hint');
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
 
         let manifest = {};
         let currentPath = [];
+
+        // Lightbox handlers
+        lightbox.addEventListener('click', () => {
+            lightbox.classList.remove('active');
+        });
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                lightbox.classList.remove('active');
+            }
+        });
 
         // Load manifest and initialize gallery
         fetch('images/manifest.json')
@@ -112,9 +129,15 @@
                     const card = document.createElement('div');
                     card.className = 'project-card image-card';
 
+                    const imgSrc = 'images/' + currentPath.join('/') + '/' + img;
                     const imgEl = document.createElement('img');
-                    imgEl.src = 'images/' + currentPath.join('/') + '/' + img;
+                    imgEl.src = imgSrc;
                     imgEl.alt = img;
+
+                    card.addEventListener('click', () => {
+                        lightboxImg.src = imgSrc;
+                        lightbox.classList.add('active');
+                    });
 
                     card.appendChild(imgEl);
                     projects.appendChild(card);
