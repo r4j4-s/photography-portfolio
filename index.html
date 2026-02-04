@@ -26,6 +26,7 @@
 
     <div class="lightbox" id="lightbox">
         <button class="lightbox-close" id="lightbox-close">&times;</button>
+        <span class="lightbox-title" id="lightbox-title"></span>
         <img src="" alt="Full view" id="lightbox-img">
     </div>
 
@@ -36,6 +37,7 @@
         const scrollHint = document.querySelector('.scroll-hint');
         const lightbox = document.getElementById('lightbox');
         const lightboxImg = document.getElementById('lightbox-img');
+        const lightboxTitle = document.getElementById('lightbox-title');
 
         let manifest = {};
         let currentPath = [];
@@ -136,6 +138,9 @@
 
                     card.addEventListener('click', () => {
                         lightboxImg.src = imgSrc;
+                        // Format title: remove extension, replace hyphens with spaces, capitalize
+                        const title = img.replace(/\.[^.]+$/, '').replace(/-/g, ' ');
+                        lightboxTitle.textContent = title;
                         lightbox.classList.add('active');
                     });
 
