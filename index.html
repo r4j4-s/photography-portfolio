@@ -236,6 +236,14 @@
                 hintHidden = true;
             }
         });
+
+        // Convert vertical scroll to horizontal scroll
+        projects.addEventListener('wheel', (e) => {
+            if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
+                e.preventDefault();
+                projects.scrollLeft += e.deltaY;
+            }
+        }, { passive: false });
     </script>
 </body>
 </html>
