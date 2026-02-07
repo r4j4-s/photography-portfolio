@@ -40,7 +40,7 @@
         "alternateName": ["Seggoju Fotografie", "Raja Seggoju Fotograf Berlin"],
         "image": "https://www.seggoju.com/images/og-image.jpg",
         "url": "https://www.seggoju.com",
-        "description": "Professional photographer in Berlin specializing in family portraits, event photography, headshots, and creative projects. Professioneller Fotograf in Berlin.",
+        "description": "Professional photographer in Berlin specializing in family portraits, event photography, headshots, and creative projects. Professioneller Fotograf in Berlin für Familienfotos, Businessportraits, und Eventfotografie.",
         "address": {
             "@type": "PostalAddress",
             "addressLocality": "Berlin",
@@ -57,7 +57,49 @@
             {"@type": "State", "name": "Brandenburg"}
         ],
         "priceRange": "$$",
-        "sameAs": []
+        "sameAs": [],
+        "hasOfferCatalog": {
+            "@type": "OfferCatalog",
+            "name": "Photography Services",
+            "itemListElement": [
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "Service",
+                        "name": "Family Photography",
+                        "description": "Family portraits and lifestyle photography sessions in Berlin. Familienfotografie und Familienportraits.",
+                        "areaServed": {"@type": "City", "name": "Berlin"}
+                    }
+                },
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "Service",
+                        "name": "Event Photography",
+                        "description": "Professional event photography for corporate events, private celebrations, and special occasions. Eventfotografie für Firmenevents und private Feiern.",
+                        "areaServed": {"@type": "City", "name": "Berlin"}
+                    }
+                },
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "Service",
+                        "name": "Headshot Photography",
+                        "description": "Professional headshots and business portraits for professionals and creatives. Businessportraits und professionelle Bewerbungsfotos.",
+                        "areaServed": {"@type": "City", "name": "Berlin"}
+                    }
+                },
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "Service",
+                        "name": "Portrait Photography",
+                        "description": "Creative portrait sessions and personal photography projects. Portraitfotografie und kreative Fotoshootings.",
+                        "areaServed": {"@type": "City", "name": "Berlin"}
+                    }
+                }
+            ]
+        }
     }
     </script>
 
@@ -82,6 +124,48 @@
         },
         "knowsAbout": ["Portrait Photography", "Family Photography", "Event Photography", "Headshot Photography", "Portraitfotografie", "Familienfotografie", "Eventfotografie"],
         "knowsLanguage": ["en", "de"]
+    }
+    </script>
+
+    <!-- Structured Data: FAQ -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "Where are you located as a photographer in Berlin?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "I am a professional photographer based in Berlin, Germany, serving all areas of Berlin and Brandenburg. Ich bin ein professioneller Fotograf mit Sitz in Berlin und arbeite in ganz Berlin und Brandenburg."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "What photography services do you offer in Berlin?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "I offer professional photography services including family portraits, event photography, corporate headshots, personal portrait sessions, and commissioned creative projects throughout Berlin and Brandenburg."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Do you offer photography services in English and German?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes, I offer photography services in both English and German. Ja, ich biete Fotografie-Dienstleistungen auf Englisch und Deutsch an."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "How can I book a photography session in Berlin?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "You can book a photography session by visiting the booking page on my website at https://www.seggoju.com/booking.html or contacting me directly to discuss your photography needs."
+                }
+            }
+        ]
     }
     </script>
 
@@ -253,6 +337,10 @@
                         // Format title: remove extension, replace hyphens with spaces, capitalize
                         const title = img.replace(/\.[^.]+$/, '').replace(/-/g, ' ');
                         lightboxTitle.textContent = title;
+                        // Set descriptive alt text
+                        const category = currentPath[0] || 'Photography';
+                        const altText = `${title} - ${category} photography by Raja H. Seggoju, Berlin photographer`;
+                        lightboxImg.alt = altText;
                         lightbox.classList.add('active');
                         // Push history state for lightbox
                         history.pushState({ path: [...currentPath], lightbox: true }, '', window.location.href);
