@@ -14,16 +14,15 @@
     ]
   },
   "Nature": [
-    "nature-1.jpg",
-    "nature-2.jpg",
-    "nature-3.jpg"
+    "Red and Green.jpeg"
   ],
   "Portraits": [
-    "portrait-1.jpg",
-    "portrait-2.jpg",
-    "portrait-3.jpg"
+    "Dummy portrait 1.jpg",
+    "Dummy portrait 2.jpg",
+    "Dummy portrait 3.jpg"
   ],
   "Street": [
+    "Bengaluru.jpeg",
     "Berlin.jpeg",
     "Dresden.jpeg"
   ]
