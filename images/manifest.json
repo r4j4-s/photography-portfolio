@@ -1,26 +1,10 @@
 {
-  "Family": {
-    "Spring": [
-      "spring-family-2.jpg",
-      "spring-family-3.jpg"
-    ],
-    "Summer": [
-      "summer-family-1.jpg",
-      "summer-family-2.jpg",
-      "summer-family-3.jpg"
-    ],
-    "Winter": [
-      "winter-family-1.jpg"
-    ]
-  },
   "Nature": [
     "Niederbobritzsch.jpeg",
     "Red and Green.jpeg"
   ],
   "Portraits": [
-    "Dummy portrait 1.jpg",
-    "Dummy portrait 2.jpg",
-    "Dummy portrait 3.jpg"
+    "Friedenau.jpeg"
   ],
   "Street": [
     "Berlin.jpeg",
